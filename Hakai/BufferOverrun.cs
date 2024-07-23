@@ -22,15 +22,15 @@ namespace Hakai
             string filePath = Path.Combine(folderPath, fileName);
             File.Create(filePath).Dispose();
 
-            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.None);
-            for (ulong i = 0; i < 18446744073709551615; i++)
+            FileStream fileStream = new (filePath, FileMode.Open, FileAccess.Write, FileShare.None);
+            for (ulong i = 0; ; i++)
             {
                 string line = $"Ligne {i + 1}\n";
                 byte[] managedBuffer = Encoding.UTF8.GetBytes(line);
 
                 fileStream.Write(managedBuffer, 0, managedBuffer.Length);
             }
-            fileStream.Close();
+            //fileStream.Close();
         }
     }
 }
